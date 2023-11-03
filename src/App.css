@@ -1,0 +1,30 @@
+.active-link {
+  font-weight: bold;
+  color: red; /* or any other desired color */
+  /* Add any other styles for the active link here */
+}
+
+
+  .loader-container {
+    display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #f0f0f0;
+}
+#loader {
+height:100px;
+width:100px;
+background-: red;
+border-radius:50%;
+border:5px solid #ddd;
+border-top-color: #333;
+animation: rotate 1s infinite;
+}
+@keyframes rotate {
+100% {
+rotate:360deg;
+}
+
+}
