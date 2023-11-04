@@ -66,7 +66,7 @@ const Home = () => {
   }, [reload])
 
   return isAuthenticated ? (
-    <section className="text-gray-600 body-font bg-gray-200">
+    <section className="text-gray-600 body-font bg-gray-200   h-screen">
     <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
       
         
