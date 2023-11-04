@@ -83,7 +83,14 @@ const Home = () => {
     </div>
     <div className="flex flex-wrap my-12 dark:text-white">
       {notes.map((i)=>(
-              <NoteList key={i._id} id={i._id} title={i.title} description={i.description} creatdAt={i.creatdAt} user={i.user} deleteHandler={deleteHandler}/>
+              <NoteList 
+              key={i._id} 
+              id={i._id} 
+              title={i.title} 
+              description={i.description} 
+              creatdAt={i.creatdAt} 
+              user={i.user.name} 
+              deleteHandler={deleteHandler}/>
             ))}
     </div>
 </div>
