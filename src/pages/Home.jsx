@@ -70,9 +70,7 @@ const Home = () => {
     <section className="text-gray-600 body-font bg-gray-200   h-screen">
     <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
 
-    <div className="border-dashed border-2 border-indigo-600 ">
-      empty box
-    </div>
+
         
 <div  className="container p-6 px-6 mx-auto bg-white---- dark:bg-gray-800      lg:w-3/5 md:w-1/2">
     <div className="mb-16 text-center">
@@ -86,16 +84,23 @@ const Home = () => {
         </p>
     </div>
     <div className="flex flex-wrap my-12 dark:text-white">
-      {notes.map((i)=>(
-              <NoteList 
-              key={i._id} 
-              id={i._id} 
-              title={i.title} 
-              description={i.description} 
-              creatdAt={i.creatdAt} 
-              user={i.user.name} 
-              deleteHandler={deleteHandler}/>
-            ))}
+    {notes.length > 0 ? (
+              notes.map((i) => (
+                <NoteList
+                  key={i._id}
+                  id={i._id}
+                  title={i.title}
+                  description={i.description}
+                  creatdAt={i.creatdAt}
+                  user={i.user.name}
+                  deleteHandler={deleteHandler}
+                />
+              ))
+            ) : (
+              <div className="border-dashed border-2 border-indigo-600 w-full">
+              empty box
+            </div>
+            )}
     </div>
 </div>
 
