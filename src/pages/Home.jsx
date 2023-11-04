@@ -98,7 +98,7 @@ const Home = () => {
               ))
             ) : (
               <div className="border-dashed border-2 border-indigo-600 w-full p-5">
-              {user?.name}Add your first note
+              {user?.name} Add your first note
             </div>
             )}
     </div>
