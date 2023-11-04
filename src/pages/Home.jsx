@@ -97,8 +97,8 @@ const Home = () => {
                 />
               ))
             ) : (
-              <div className="border-dashed border-2 border-indigo-600 w-full">
-              empty box
+              <div className="border-dashed border-2 border-indigo-600 w-full p-5">
+              Add your first note
             </div>
             )}
     </div>
