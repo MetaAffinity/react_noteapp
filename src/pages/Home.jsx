@@ -33,10 +33,10 @@ const Home = () => {
 
   const deleteAll = async() => {
     try {
-      const {data} = await axios.delete(`${server}/notes/deleteall`,{
+       await axios.delete(`${server}/notes/deleteall`,{
         withCredentials: true,
       })
-      toast.success(data.message)
+      toast.success("All notes deleted")
       setReload(prev=>!prev) // reload   previous notes from server after delete operation completes 
     } catch (error) {
       toast.error(error.response.data.message)
