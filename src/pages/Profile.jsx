@@ -8,7 +8,7 @@ const Profile = () => {
   const {isAuthenticated, loading, user} = useContext(Context)
   const [getUsers, setGetUsers] = useState([])
 
-
+// get all users
   useEffect(() => {
     axios
       .get(`${server}/users/all`, {})

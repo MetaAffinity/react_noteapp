@@ -23,7 +23,7 @@ const Home = () => {
         withCredentials: true,
       })
       toast.success(data.message)
-      setReload(prev=>!prev)
+      setReload(prev=>!prev) // reload   previous notes from server after delete operation completes 
     } catch (error) {
       toast.error(error.response.data.message)
     }
@@ -98,7 +98,7 @@ const Home = () => {
               ))
             ) : (
               <div className="border-dashed border-2 border-indigo-600 w-full p-5">
-              hellow {user.name}Add your first note
+              {user?.name}Add your first note
             </div>
             )}
     </div>
