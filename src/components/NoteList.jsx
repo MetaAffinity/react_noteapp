@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NoteList = ({title,description, creatdAt, user, deleteHandler, id}) => {
+const NoteList = ({title,description, createdAt, user, deleteHandler, id}) => {
   return (
     <>
         <div className="w-full p-8 md:w-1/2 lg:w-1/3      shadow-xl">
@@ -39,7 +39,7 @@ const NoteList = ({title,description, creatdAt, user, deleteHandler, id}) => {
                     {title}
                 </span>
                 <span className="flex items-center text-xs dark:text-gray-400">
-                    {creatdAt}
+                    {createdAt} by {user}
                     <img src="/icons/rocket.svg" className="w-4 h-4 ml-2"/>
                 </span>
             </div>

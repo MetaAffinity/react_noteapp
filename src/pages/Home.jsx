@@ -14,7 +14,7 @@ const Home = () => {
   const [notes, setNotes] = useState([])
   const [reload,setReload] = useState(false)
   
-  const {isAuthenticated} = useContext(Context)
+  const {isAuthenticated, user} = useContext(Context)
 
 
   const deleteHandler = async(id) => {
@@ -91,14 +91,14 @@ const Home = () => {
                   id={i._id}
                   title={i.title}
                   description={i.description}
-                  creatdAt={i.creatdAt}
+                  createdAt={i.createdAt}
                   user={i.user.name}
                   deleteHandler={deleteHandler}
                 />
               ))
             ) : (
               <div className="border-dashed border-2 border-indigo-600 w-full p-5">
-              Add your first note
+              hellow {user.name}Add your first note
             </div>
             )}
     </div>
@@ -110,19 +110,19 @@ const Home = () => {
         
         
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 ">
-        <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Add Your Note</h2>
-        <form onSubmit={addHandler}>
-        <div className="relative mb-4">
-          <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Title</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}  id="full-name" name="full-name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-        </div>
-        <div className="relative mb-4">
-          <label htmlFor="email" className="leading-7 text-sm text-gray-600">Description</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)}  className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="comment" placeholder="Enter your comment" name="comment" rows="5" cols="40" />
-        </div>
-        <button disabled={loading} className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Add Note</button>
-        
-        </form>
+          <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Add Your Note</h2>
+          <form onSubmit={addHandler}>
+          <div className="relative mb-4">
+            <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Title</label>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}  id="full-name" name="full-name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+          </div>
+          <div className="relative mb-4">
+            <label htmlFor="email" className="leading-7 text-sm text-gray-600">Description</label>
+            <textarea value={description} onChange={(e) => setDescription(e.target.value)}  className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="comment" placeholder="Enter your comment" name="comment" rows="5" cols="40" />
+          </div>
+          <button disabled={loading} className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Add Note</button>
+          
+          </form>
       </div>
 
     </div>

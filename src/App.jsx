@@ -18,6 +18,7 @@ const App = () => {
 
   const { setUser, setIsAuthenticated, setLoading} = useContext(Context)   // from MAIN
 
+  //with this hook user will be logged in and will not be logged out
   useEffect(() => {
     setLoading(true)
     axios.get(`${server}/users/me`,{

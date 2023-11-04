@@ -1,9 +1,27 @@
-import React, { useContext } from 'react'
-import { Context } from '../main'
+import React, { useContext, useEffect, useState } from 'react'
+import { Context, server } from '../main'
 import Loader from '../components/Loader'
+
+import axios from 'axios'
 
 const Profile = () => {
   const {isAuthenticated, loading, user} = useContext(Context)
+  const [getUsers, setGetUsers] = useState([])
+
+
+  useEffect(() => {
+    axios
+      .get(`${server}/users/all`, {})
+      .then((res) => {
+        setGetUsers(res.data.users); // Use 'users' instead of 'user' to get the user list
+      })
+      .catch((error) => {
+        console.error(error);
+        setGetUsers([]);
+      });
+  }, []);
+
+
   return loading ?  (
 
     <Loader />
@@ -32,6 +50,19 @@ const Profile = () => {
                 </button>
             </div>
         </div>
+
+
+        <div className="mt-4">
+          <h3 className="text-2xl font-bold">All Users</h3>
+          <ul>
+            {getUsers.map((user, index) => (
+              <li key={index}>{user.name}- {user.email}</li>
+            ))}
+          </ul>
+        </div>
+
+
+
     </div>
 </div>
 
