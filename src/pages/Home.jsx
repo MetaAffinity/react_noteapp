@@ -85,7 +85,7 @@ const Home = () => {
     </div>
     <div className="flex flex-wrap my-12 dark:text-white">
     {notes.length > 0 ? (
-              notes.map((i) => (
+              notes.slice().reverse().map((i) => (
                 <NoteList
                   key={i._id}
                   id={i._id}
