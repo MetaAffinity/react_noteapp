@@ -13,6 +13,7 @@ const Home = () => {
   const [loading, setLoading] = useState("")
   const [notes, setNotes] = useState([])
   const [reload,setReload] = useState(false)
+
   
   const {isAuthenticated, user} = useContext(Context)
 
@@ -30,14 +31,27 @@ const Home = () => {
   
   }
 
+  const deleteAll = async() => {
+    try {
+      const {data} = await axios.delete(`${server}/notes/deleteall`,{
+        withCredentials: true,
+      })
+      toast.success(data.message)
+      setReload(prev=>!prev) // reload   previous notes from server after delete operation completes 
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
+  
+  }
+
   const addHandler = async(e) => {
     e.preventDefault()
+    console.log(title, description)
     try {
       setLoading(true)
       const {data} = await axios.post(`${server}/notes/newnote`, {
-        title,description,
-
-      },{
+        title,description
+      },  {
         headers:{
           "Content-Type": "application/json"
         },
@@ -111,7 +125,7 @@ const Home = () => {
         
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 ">
           <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Add Your Note</h2>
-          <form onSubmit={addHandler}>
+          <form onSubmit={addHandler} encType='multipart/form-data'>
           <div className="relative mb-4">
             <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Title</label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}  id="full-name" name="full-name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -120,9 +134,12 @@ const Home = () => {
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">Description</label>
             <textarea value={description} onChange={(e) => setDescription(e.target.value)}  className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="comment" placeholder="Enter your comment" name="comment" rows="5" cols="40" />
           </div>
+          
           <button disabled={loading} className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Add Note</button>
           
           </form>
+          <button disabled={loading} onClick={deleteAll} className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Delete All</button>
+
       </div>
 
     </div>
