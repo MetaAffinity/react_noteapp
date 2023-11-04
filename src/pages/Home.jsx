@@ -137,7 +137,7 @@ const Home = () => {
           A better way to manage our notes
         </h1>
         <p className="leading-relaxed mt-4">
-          Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
+        QuickNotes is a user-friendly and efficient note-making application designed to help you capture and organize your thoughts, ideas, and important information. Whether you're a student, professional, or simply someone who loves to jot down notes, QuickNotes is the perfect tool to streamline your note-taking process.</p>
       </div>
       <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
         <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
