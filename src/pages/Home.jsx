@@ -66,9 +66,13 @@ const Home = () => {
   }, [reload])
 
   return isAuthenticated ? (
+
     <section className="text-gray-600 body-font bg-gray-200   h-screen">
     <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
-      
+
+    <div className="border-dashed border-2 border-indigo-600 ">
+      empty box
+    </div>
         
 <div  className="container p-6 px-6 mx-auto bg-white---- dark:bg-gray-800      lg:w-3/5 md:w-1/2">
     <div className="mb-16 text-center">
@@ -120,11 +124,15 @@ const Home = () => {
   </section>
     ) :(
     <>
-    <section className="text-gray-600 body-font    bg-gray-300">
+    <section className="text-gray-600 body-font    bg-gray-200 h-screen">
     <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
       <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-        <h1 className="title-font font-medium text-3xl text-gray-900">Slow-carb next level shoindcgoitch ethical authentic, poko scenester</h1>
-        <p className="leading-relaxed mt-4">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
+        <h1 className="title-font font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 text-3xl ">
+        
+          A better way to manage our notes
+        </h1>
+        <p className="leading-relaxed mt-4">
+          Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
       </div>
       <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
         <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
