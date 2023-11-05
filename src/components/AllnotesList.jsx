@@ -1,7 +1,7 @@
 
 
 const AllnotesList = ({title,description, user, createdAt}) => {
-    console.log(user);
+    //console.log(user);
   return (
     <>
         <div className="w-full p-8 md:w-1/2 lg:w-1/3      shadow-xl">
