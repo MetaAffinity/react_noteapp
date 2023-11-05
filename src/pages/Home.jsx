@@ -149,6 +149,9 @@ const Home = () => {
     <section className="text-gray-600 body-font    bg-gray-200 h-screen">
     <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
       <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+      <h1 className="title-font font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500 text-7xl mb-8 ">
+        NOTE BLOCKS
+      </h1>
         <h1 className="title-font font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 text-3xl ">
         
           A better way to manage our notes
