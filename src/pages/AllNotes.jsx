@@ -51,7 +51,7 @@ const AllNotes = () => {
                   title={i.title}
                   description={i.description}
                   createdAt={i.createdAt}
-                  user={i.user.name}
+                  user={i.user['name']}
 
                 />
               ))
