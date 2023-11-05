@@ -46,6 +46,7 @@ try {
     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
       <NavLink to="/" className={({ isActive}) =>isActive ? "text-sky-500 mr-5 font-bold" : " mr-5 hover:text-gray-900"}>Home</NavLink>
       <NavLink to="/profile"  className={({ isActive}) =>isActive ? "text-sky-500 mr-5 font-bold" : " mr-5 hover:text-gray-900"}>Profile</NavLink>
+      <NavLink to="/allnotes"  className={({ isActive}) =>isActive ? "text-sky-500 mr-5 font-bold" : " mr-5 hover:text-gray-900"}>All Notes</NavLink>
       {isAuthenticated ? (
       <NavLink to={"/logout"} onClick={logoutHandler} className={({ isActive}) =>isActive ? "text-sky-500 mr-5 font-bold" : " mr-5 hover:text-gray-900"}>Logout</NavLink>
       ): (

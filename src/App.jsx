@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { Context, server } from './main'
+import AllNotes from './pages/AllNotes'
 
 
 
@@ -45,6 +46,7 @@ const App = () => {
 
         <Route path='/' element={<Home />}  />
         <Route path='/profile' element={<Profile />}  />
+        <Route path='/allnotes' element={<AllNotes />}  />
         <Route path='/login' element={<Login />}  />
         <Route path='/register' element={<Register />}  />
 
