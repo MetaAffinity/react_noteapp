@@ -9,6 +9,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const [dislikeActive, setDislikeActive] = useState(false);
 
     const handleLike = () => {
+        console.log(likes)
         if (likeActive) {
             // Unlike the note
             axios.put(`${server}/notes/dislike/${noteId}`)
@@ -42,7 +43,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const handleDislike = () => {
         if (dislikeActive) {
             // Undislike the note
-            axios.put(`/api/v1/notes/like/${noteId}`)
+            axios.put(`${server}/notes/like/${noteId}`)
                 .then(response => {
                     setDislikeActive(false);
                     setDislikes(response.data.dislikes);
@@ -52,14 +53,14 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
                 });
         } else {
             // Dislike the note
-            axios.put(`/api/v1/notes/dislike/${noteId}`)
+            axios.put(`${server}/notes/dislike/${noteId}`)
                 .then(response => {
                     setDislikeActive(true);
                     setDislikes(response.data.dislikes);
 
                     if (likeActive) {
                         // Cancel the like
-                        axios.put(`/api/v1/notes/like/${noteId}`)
+                        axios.put(`${server}/notes/like/${noteId}`)
                             .then(likeResponse => setLikes(likeResponse.data.likes))
                             .catch(error => console.error(error));
                     }
