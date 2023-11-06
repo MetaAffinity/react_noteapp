@@ -5,6 +5,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import NoteList from '../components/NoteList'
+import Like from '../components/Like'
 
 const Home = () => {
 
@@ -158,7 +159,11 @@ const Home = () => {
         </h1>
         <p className="leading-relaxed mt-4">
         QuickNotes is a user-friendly and efficient note-making application designed to help you capture and organize your thoughts, ideas, and important information. Whether you're a student, professional, or simply someone who loves to jot down notes, QuickNotes is the perfect tool to streamline your note-taking process.</p>
+        <div>
+          <Like/>
+        </div>
       </div>
+
       <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
         <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
         <div className="relative mb-4">
@@ -171,6 +176,7 @@ const Home = () => {
         </div>
         <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
         <p className="text-xs text-gray-500 mt-3">Literally you probably havent heard of them new notes.</p>
+
       </div>
     </div>
   </section>

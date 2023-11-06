@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import React from 'react'
 import { server } from '../main';
 import AllnotesList from '../components/AllnotesList';
+import Like from '../components/Like';
 
 const AllNotes = () => {
 
@@ -43,24 +44,29 @@ const AllNotes = () => {
         </p>
     </div>
     <div className="flex flex-wrap my-12 dark:text-white">
-    {getallNotes.length > 0 ? (
-              getallNotes.map((i) => (
-                <AllnotesList
-                  key={i._id}
-                  id={i._id}
-                  title={i.title}
-                  description={i.description}
-                  createdAt={i.createdAt}
-                  user={i.user.name}
-
-                />
-              ))
-            ) : (
-              <div className="border-dashed border-2 border-indigo-600 w-full p-5">
-                There is no any note available
-            </div>
-            )}
-    </div>
+                        {getallNotes.length > 0 ? (
+                            getallNotes.map((note) => (
+                                <div key={note._id}>
+                                    <AllnotesList
+                                        id={note._id}
+                                        title={note.title}
+                                        description={note.description}
+                                        createdAt={note.createdAt}
+                                        user={note.user.name}
+                                    />
+                                    <Like
+                                        noteId={note._id}
+                                        initialLikes={note.likes}
+                                        initialDislikes={note.dislikes}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="border-dashed border-2 border-indigo-600 w-full p-5">
+                                There is no any note available
+                            </div>
+                        )}
+                    </div>
 </div>
 
 
