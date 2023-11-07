@@ -15,7 +15,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
 
     const fetchLikedUsers = () => {
         axios
-          .get(`${server}/notes/liked/${noteId}/users`)
+          .get(`${server}/like/${noteId}/users`)
           .then((response) => {
             setLikedUsers(response.data.users);
           })
@@ -26,7 +26,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     
       const fetchDislikedUsers = () => {
         axios
-          .get(`${server}/disliked/${noteId}/users`)
+          .get(`${server}/dislike/${noteId}/users`)
           .then((response) => {
             setDislikedUsers(response.data.users);
           })
