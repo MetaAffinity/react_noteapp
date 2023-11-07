@@ -13,18 +13,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const [likedUsers, setLikedUsers] = useState([]);
     const [dislikedUsers, setDislikedUsers] = useState([]);
 
-    useEffect(() => {
-        axios
-        .get(`${server}/notes/like/${noteId}/users`)
-        .then((response) => {
-            setLikedUsers(response.data.users);
-            setIsAuthenticated(true);
-        })
-        .catch((error) => {
-            console.error(error);
-            setIsAuthenticated(false);
-        });
-    }, [])
+
     
 
     const fetchLikedUsers = () => {
