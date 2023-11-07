@@ -18,9 +18,11 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
           .get(`${server}/like/${noteId}/users`)
           .then((response) => {
             setLikedUsers(response.data.users);
+            setIsAuthenticated(true);
           })
           .catch((error) => {
             console.error(error);
+            setIsAuthenticated(false);
           });
       };
     
@@ -103,7 +105,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
 
                     if (likeActive) {
                         // Cancel the like
-                        axios.put(`${server}/notes/like/${noteId}`, null, {
+                        axios.put(`${server}/notes/dislike/${noteId}`, null, {
                             withCredentials: true,
                         })
                             .then(likeResponse => setLikes(likeResponse.data.likes))
@@ -134,7 +136,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
         <h3>Liked Users:</h3>
         <ul>
           {likedUsers.map((user) => (
-            <li key={user._id}>{user.username}</li>
+            <li key={user._id}>{user.name}</li>
           ))}
         </ul>
       </div>
@@ -142,7 +144,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
         <h3>Disliked Users:</h3>
         <ul>
           {dislikedUsers.map((user) => (
-            <li key={user._id}>{user.username}</li>
+            <li key={user._id}>{user.name}</li>
           ))}
         </ul>
       </div>
