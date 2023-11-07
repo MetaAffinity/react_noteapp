@@ -13,30 +13,27 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const [likedUsers, setLikedUsers] = useState([])
     const [dislikedUsers, setDislikedUsers] = useState([])
 
-    useEffect(() => {
-      axios.get(`${server}/notes/likedusers/${noteId}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        setLikedUsers(response.data.likedUsers)
-      })
-      .catch((error) => {
-        console.error(error);
-      
-      })
-
-      axios.get(`${server}/notes/dislikedusers/${noteId}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        setDislikedUsers(response.data.dislikedUsers)
-      })
-      .catch((error) => {
-        console.error(error);
-      
-      })
-
-    }, [noteId])
+    const fetchLikedUsers = () => {
+        axios
+          .get(`${server}/notes/liked/${noteId}/users`)
+          .then((response) => {
+            setLikedUsers(response.data.users);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
+    
+      const fetchDislikedUsers = () => {
+        axios
+          .get(`${server}/disliked/${noteId}/users`)
+          .then((response) => {
+            setDislikedUsers(response.data.users);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
     
 
     const handleLike = () => {
@@ -122,14 +119,36 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     };
 
     return (
-        <div>
+        <>
         <button onClick={handleLike} className={[likeActive ? 'bg-indigo-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
             Like ({likes}) by {likedUsers.join(', ')}
             </button> ---
         <button onClick={handleDislike} className={[dislikeActive ? 'bg-red-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
             Dislike ({dislikes}) by {dislikedUsers.join(', ')}
             </button>
-    </div>
+            
+            <div>
+      <button onClick={fetchLikedUsers}>Fetch Liked Users</button>
+      <button onClick={fetchDislikedUsers}>Fetch Disliked Users</button>
+      <div>
+        <h3>Liked Users:</h3>
+        <ul>
+          {likedUsers.map((user) => (
+            <li key={user._id}>{user.username}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Disliked Users:</h3>
+        <ul>
+          {dislikedUsers.map((user) => (
+            <li key={user._id}>{user.username}</li>
+          ))}
+        </ul>
+      </div>
+      </div>
+           
+    </>
     );
 };
 
