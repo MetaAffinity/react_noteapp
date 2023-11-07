@@ -43,7 +43,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const handleLike = () => {
         if (likeActive) {
             // Unlike the note
-            axios.put(`${server}/notes/dislike/${noteId}`, null, {
+            axios.put(`${server}/dislike/${noteId}`, null, {
                 withCredentials: true,
             })
                 .then(response => {
@@ -57,7 +57,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
                 });
         } else {
             // Like the note
-            axios.put(`${server}/notes/like/${noteId}`, null, {
+            axios.put(`${server}/like/${noteId}`, null, {
                 withCredentials: true,
             })
                 .then(response => {
@@ -66,7 +66,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
 
                     if (dislikeActive) {
                         // Cancel the dislike
-                        axios.put(`${server}/notes/dislike/${noteId}`, null, {
+                        axios.put(`${server}/dislike/${noteId}`, null, {
                             withCredentials: true,
                         })
                             .then(dislikeResponse => setDislikes(dislikeResponse.data.dislikes))
