@@ -9,33 +9,6 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const [dislikes, setDislikes] = useState(initialDislikes);
     const [likeActive, setLikeActive] = useState(false);
     const [dislikeActive, setDislikeActive] = useState(false);
-
-    const [likedUsers, setLikedUsers] = useState([])
-    const [dislikedUsers, setDislikedUsers] = useState([])
-
-    const fetchLikedUsers = () => {
-        axios
-          .get(`${server}/like/${noteId}/users`)
-          .then((response) => {
-            setLikedUsers(response.data.users);
-            setIsAuthenticated(true);
-          })
-          .catch((error) => {
-            console.error(error);
-            setIsAuthenticated(false);
-          });
-      };
-    
-      const fetchDislikedUsers = () => {
-        axios
-          .get(`${server}/dislike/${noteId}/users`)
-          .then((response) => {
-            setDislikedUsers(response.data.users);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      };
     
 
     const handleLike = () => {
@@ -123,13 +96,13 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     return (
         <>
         <button onClick={handleLike} className={[likeActive ? 'bg-indigo-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
-            Like ({likes}) by {likedUsers.join(', ')}
+            Like ({likes}) 
             </button> ---
         <button onClick={handleDislike} className={[dislikeActive ? 'bg-red-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
-            Dislike ({dislikes}) by {dislikedUsers.join(', ')}
+            Dislike ({dislikes})
             </button>
             
-            <div>
+            <div  style={{display:'none'}}>
       <button onClick={fetchLikedUsers}>Fetch Liked Users</button>
       <button onClick={fetchDislikedUsers}>Fetch Disliked Users</button>
       <div>
