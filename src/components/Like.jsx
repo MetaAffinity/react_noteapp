@@ -9,7 +9,47 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const [dislikes, setDislikes] = useState(initialDislikes);
     const [likeActive, setLikeActive] = useState(false);
     const [dislikeActive, setDislikeActive] = useState(false);
+
+    const [likedUsers, setLikedUsers] = useState([]);
+    const [dislikedUsers, setDislikedUsers] = useState([]);
+
+    useEffect(() => {
+        axios
+        .get(`${server}/notes/like/${noteId}/users`)
+        .then((response) => {
+            setLikedUsers(response.data.users);
+            setIsAuthenticated(true);
+        })
+        .catch((error) => {
+            console.error(error);
+            setIsAuthenticated(false);
+        });
+    }, [])
     
+
+    const fetchLikedUsers = () => {
+        axios
+          .get(`${server}/like/${noteId}/users`)
+          .then((response) => {
+            setLikedUsers(response.data.users);
+            setIsAuthenticated(true);
+          })
+          .catch((error) => {
+            console.error(error);
+            setIsAuthenticated(false);
+          });
+      };
+    
+      const fetchDislikedUsers = () => {
+        axios
+          .get(`${server}/dislike/${noteId}/users`)
+          .then((response) => {
+            setDislikedUsers(response.data.users);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
 
     const handleLike = () => {
         if (likeActive) {
@@ -96,7 +136,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     return (
         <>
         <button onClick={handleLike} className={[likeActive ? 'bg-indigo-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
-            Like ({likes}) 
+            Like ({likedUsers.length > 0 ? likedUsers.map(user => user.name).join(', ') : 'No likes'})
             </button> ---
         <button onClick={handleDislike} className={[dislikeActive ? 'bg-red-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
             Dislike ({dislikes})
