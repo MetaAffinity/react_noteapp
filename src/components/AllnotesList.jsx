@@ -1,6 +1,6 @@
 
 
-const AllnotesList = ({title,description, user, createdAt}) => {
+const AllnotesList = ({title,description}) => {
     //console.log(user);
   return (
     <>
@@ -17,8 +17,7 @@ const AllnotesList = ({title,description, user, createdAt}) => {
             <p className="leading-loose text-gray-500 dark:text-gray-200 text-md">
             {description}
             </p>
-            <div className="flex items-center mt-4">{createdAt}</div>
-            <div className="flex items-center mt-4">{user}</div>
+            <p>Likes - Dislikes</p>
         </div>
 
     </>
