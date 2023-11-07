@@ -94,13 +94,9 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
 
     return (
         <div>
-            <button onClick={handleLike} className={likeActive ? 'text-indigo-500' : null}>
-                Like {likes}
-            </button>{" "}
-            <button onClick={handleDislike} className={dislikeActive ? 'text-red-500' : null}>
-                Dislike {dislikes}
-            </button>
-        </div>
+        <button onClick={handleLike} className={[likeActive ? 'bg-indigo-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>Like {likes}</button> ---
+        <button onClick={handleDislike} className={[dislikeActive ? 'bg-red-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>Dislike {dislikes}</button>
+    </div>
     );
 };
 
