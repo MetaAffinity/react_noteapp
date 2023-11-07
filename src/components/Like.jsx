@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { Context, server } from '../main';
 
@@ -9,6 +9,35 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
     const [dislikes, setDislikes] = useState(initialDislikes);
     const [likeActive, setLikeActive] = useState(false);
     const [dislikeActive, setDislikeActive] = useState(false);
+
+    const [likedUsers, setLikedUsers] = useState([])
+    const [dislikedUsers, setDislikedUsers] = useState([])
+
+    useEffect(() => {
+      axios.get(`${server}/notes/likedusers/${noteId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setLikedUsers(response.data.likedUsers)
+      })
+      .catch((error) => {
+        console.error(error);
+      
+      })
+
+      axios.get(`${server}/notes/dislikedusers/${noteId}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setDislikedUsers(response.data.dislikedUsers)
+      })
+      .catch((error) => {
+        console.error(error);
+      
+      })
+
+    }, [noteId])
+    
 
     const handleLike = () => {
         if (likeActive) {
@@ -94,8 +123,12 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
 
     return (
         <div>
-        <button onClick={handleLike} className={[likeActive ? 'bg-indigo-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>Like ({likes})</button> ---
-        <button onClick={handleDislike} className={[dislikeActive ? 'bg-red-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>Dislike {dislikes}</button>
+        <button onClick={handleLike} className={[likeActive ? 'bg-indigo-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
+            Like ({likes}) by {likedUsers.join(', ')}
+            </button> ---
+        <button onClick={handleDislike} className={[dislikeActive ? 'bg-red-500 text-white px-2 text-md':null,'px-2 rounded-md border-slate-400 hover:border-indigo-300'].join('')}>
+            Dislike ({dislikes}) by {dislikedUsers.join(', ')}
+            </button>
     </div>
     );
 };
