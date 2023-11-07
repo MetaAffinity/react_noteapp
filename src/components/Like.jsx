@@ -102,26 +102,7 @@ const Like = ({ noteId, initialLikes, initialDislikes }) => {
             Dislike ({dislikes})
             </button>
             
-            <div  style={{display:'none'}}>
-      <button onClick={fetchLikedUsers}>Fetch Liked Users</button>
-      <button onClick={fetchDislikedUsers}>Fetch Disliked Users</button>
-      <div>
-        <h3>Liked Users:</h3>
-        <ul>
-          {likedUsers.map((user) => (
-            <li key={user._id}>{user.name}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h3>Disliked Users:</h3>
-        <ul>
-          {dislikedUsers.map((user) => (
-            <li key={user._id}>{user.name}</li>
-          ))}
-        </ul>
-      </div>
-      </div>
+
            
     </>
     );
