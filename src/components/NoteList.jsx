@@ -16,6 +16,7 @@ const NoteList = ({title,description, createdAt, user, deleteHandler, id}) => {
             <p className="leading-loose text-gray-500 dark:text-gray-200 text-md">
             {description}
             </p>
+            <p>{createdAt}</p>
             <div className="flex items-center mt-4">{user}</div>
             <button  onClick={() => deleteHandler(id)} className="text-white text-base  py-1 px-3 bg-sky-500 hover:bg-sky-700 rounded">Delete</button>
         </div>
